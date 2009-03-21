@@ -4,7 +4,7 @@ This is essentially just a many-to-many link from reader groups to forums. As wi
 
 ## Status
 
-Just now thrown together so probably full of holes. It's very simple, though. Might just work.
+Just now thrown together so probably full of holes. It's very simple, though. Might just work. 
 
 ## Bugs and comments
 

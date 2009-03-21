@@ -20,7 +20,18 @@ module ForumExtensions
 
       alias_method_chain :visible_to?, :groups
       alias_method_chain :visible_by_default?, :groups
+
+      include InstanceMethods
+      
     }
+  end
+  
+  module InstanceMethods     
+  
+    def has_group?(group)
+      return self.groups.include?(group)
+    end
+    
   end
 
 end
