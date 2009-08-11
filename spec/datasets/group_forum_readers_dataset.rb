@@ -11,7 +11,7 @@ class GroupForumReadersDataset < Dataset::Base
   helpers do
     def create_reader(name, attributes={})
       attributes = reader_attributes(attributes.update(:name => name))
-      reader = create_record Reader, name.symbolize, attributes
+      reader = create_model Reader, name.symbolize, attributes
     end
     
     def reader_attributes(attributes={})
@@ -20,24 +20,27 @@ class GroupForumReadersDataset < Dataset::Base
       attributes = { 
         :name => name,
         :email => "#{symbol}@spanner.org", 
-        :login => "#{symbol}@spanner.org", 
-        :salt => "golly",
-        :password => Digest::SHA1.hexdigest("--golly--password--"),
-        :activation_code => nil,
-        :activated_at => Time.now.utc
+        :login => "#{symbol}@spanner.org",
+        :activated_at => Time.now - 1.week,
+        :password_salt => "golly",
+        :password => 'password',
+        :password_confirmation => 'password'
       }.merge(attributes)
-      attributes[:site_id] ||= site_id(:test) if defined? Site
+      attributes[:site] = sites(:test) if defined? Site
       attributes
     end
-    
+        
     def login_as_reader(reader)
+      activate_authlogic
       login_reader = reader.is_a?(Reader) ? reader : readers(reader)
-      request.session['reader_id'] = login_reader.id
+      ReaderSession.create(login_reader)
       login_reader
     end
     
     def logout_reader
-      request.session['reader_id'] = nil
+      if session = ReaderSession.find
+        session.destroy
+      end
     end
   end
  
