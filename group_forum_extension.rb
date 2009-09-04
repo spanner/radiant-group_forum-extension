@@ -6,9 +6,10 @@ class GroupForumExtension < Radiant::Extension
   def activate
     Group.send :include, GroupExtensions
     Forum.send :include, ForumExtensions
-    
-    admin.forum.edit.add :form, "forum_groups"
-    # admin.group.edit.add :form, "group_forums"
+
+    unless admin.forum.edit.form && admin.forum.edit.form.include?("forum_groups")
+      admin.forum.edit.add :form, "forum_groups"
+    end
   end
   
   def deactivate
