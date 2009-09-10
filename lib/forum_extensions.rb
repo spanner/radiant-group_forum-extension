@@ -8,12 +8,11 @@ module ForumExtensions
         groups.empty? && visible_by_default_without_groups?           # ungrouped means visible to all
       end
 
-      # Forum.visible_to, w
       def visible_to_with_groups?(reader)
-        return true if reader.is_admin?                               # reader attached to admin user sees all
         return true if visible_by_default?                            # visible by default normally means 'has no groups'
-        return false if reader.nil?                                   # forum not visible by default and reader not logged in: no see
-        return true unless (groups & reader.groups).empty?       # if reader is in any permitted group: yes see
+        return false unless reader                                    # forum not visible by default and reader not logged in: no see
+        return true if reader.is_admin?                               # reader attached to admin user sees all
+        return true unless (groups & reader.groups).empty?            # if reader is in any permitted group: yes see
         return false                                                  # otherwise, no see
       end
 

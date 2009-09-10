@@ -18,7 +18,7 @@ module PostsControllerExtensions
           return false
         end
       end
-
+    }
   end
 end
 

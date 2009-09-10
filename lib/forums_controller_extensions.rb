@@ -13,6 +13,6 @@ module ForumsControllerExtensions
           return false
         end
       end
-
+    }
   end
 end

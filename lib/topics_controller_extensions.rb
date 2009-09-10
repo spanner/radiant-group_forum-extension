@@ -18,7 +18,7 @@ module TopicsControllerExtensions
           return false
         end
       end
-
+    }
   end
 end
 
