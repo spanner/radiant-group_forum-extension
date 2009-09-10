@@ -5,24 +5,22 @@ module ForumExtensions
       alias inherited_groups groups
 
       def visible_by_default_with_groups?
-        groups.empty? && visible_by_default_without_groups?
+        groups.empty? && visible_by_default_without_groups?           # ungrouped means visible to all
       end
 
       # Forum.visible_to, w
       def visible_to_with_groups?(reader)
-        return true if reader.is_admin?
-        return true if visible_by_default?
-        return false if reader.nil?
-        return false if reader.groups.empty?
-        return true unless (self.groups & reader.groups).empty?
-        return false
+        return true if reader.is_admin?                               # reader attached to admin user sees all
+        return true if visible_by_default?                            # visible by default normally means 'has no groups'
+        return false if reader.nil?                                   # forum not visible by default and reader not logged in: no see
+        return true unless (groups & reader.groups).empty?       # if reader is in any permitted group: yes see
+        return false                                                  # otherwise, no see
       end
 
       alias_method_chain :visible_to?, :groups
       alias_method_chain :visible_by_default?, :groups
 
       include InstanceMethods
-      
     }
   end
   
