@@ -1,12 +1,14 @@
 # Group Forum
 
-This is a bit of glue to link reader groups to forums. 
+This is a bit of glue to link reader groups to forums. In order to make access control simple and expressible in SQL, it sets up a simple `belongs_to :group` relationship in the forum and then cascades it to topics and posts.
 
-As with group pages, it imposes the rule that a forum with any group associations is only visible to members of those groups.
+(this is achieved by calling `is_grouped` and `gives_group_to :topics`, plus a bit of controller fiddling)
+
+The Radius tags supporting this are pretty basic at the moment but will improve. Access control has been the first priority.
 
 ## Status
 
-Very simple, minimally tested, should just work.
+Very simple, reasonably well-tested, should just work.
 
 ## Bugs and comments
 
