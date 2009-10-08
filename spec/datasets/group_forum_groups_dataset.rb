@@ -1,13 +1,14 @@
 require 'digest/sha1'
 class GroupForumGroupsDataset < Dataset::Base
-  uses :group_forum_forums, :group_forum_readers, (:group_forum_sites if defined? Site)
+  datasets = [:group_forum_readers]
+  datasets << :group_forum_sites if defined? Site
+  uses *datasets
 
   def load
     create_group "Normal"
     create_group "Chatty"
 
     add_readers_to_group :chatty, [:normal, :another]
-    add_forums_to_group :chatty, [:grouped, :alsogrouped]
   end
   
   helpers do
@@ -27,13 +28,8 @@ class GroupForumGroupsDataset < Dataset::Base
   end
     
   def add_readers_to_group(g, rr)
-    g = g.is_a?(Group) ? g : groups(g)
-    g.readers <<  rr.map{|r| readers(r)}
+    g = groups(g) unless g.is_a?(Group)
+    g.readers << rr.map{|r| readers(r)}
   end
-  
-  def add_forums_to_group(g, ff)
-    g = g.is_a?(Group) ? g : groups(g)
-    g.forums <<  ff.map{|f| forums(f)}
-  end
-  
+
 end

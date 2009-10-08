@@ -29,19 +29,6 @@ class GroupForumReadersDataset < Dataset::Base
       attributes[:site] = sites(:test) if defined? Site
       attributes
     end
-        
-    def login_as_reader(reader)
-      activate_authlogic
-      login_reader = reader.is_a?(Reader) ? reader : readers(reader)
-      ReaderSession.create(login_reader)
-      login_reader
-    end
-    
-    def logout_reader
-      if session = ReaderSession.find
-        session.destroy
-      end
-    end
   end
  
 end
