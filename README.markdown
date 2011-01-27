@@ -2,7 +2,7 @@
 
 This is a bit of glue to link reader groups to forums. In order to make access control simple and expressible in SQL, it sets up a simple `belongs_to :group` relationship in the forum and then cascades it to topics and posts.
 
-(this is achieved by calling `is_grouped` and `gives_group_to :topics`, plus a bit of controller fiddling)
+(this is achieved by calling `has_group` and `gives_group_to :topics`, plus a bit of controller fiddling)
 
 The Radius tags supporting this are pretty basic at the moment but will improve. Access control has been the first priority.
 
