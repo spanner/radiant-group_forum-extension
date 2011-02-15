@@ -7,8 +7,8 @@ describe Forum do
     @site = Page.current_site = sites(:test) if defined? Site
   end
   
-  it "should have a group association" do
-    Forum.reflect_on_association(:group).should_not be_nil
+  it "should have a groups association" do
+    Forum.reflect_on_association(:groups).should_not be_nil
   end
   
   it "should normally list only the ungrouped forums" do
