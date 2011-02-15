@@ -1,5 +1,5 @@
 class GroupForumExtension < Radiant::Extension
-  version "0.5.0"
+  version "0.5.1"
   description "Just a bit of access-control glue joining reader_groups to forum"
   url "http://spanner.org/radiant/group_forums"
   

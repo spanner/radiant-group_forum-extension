@@ -5,18 +5,19 @@
 
 Gem::Specification.new do |s|
   s.name = %q{radiant-group_forum-extension}
-  s.version = "0.4.1"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["spanner"]
-  s.date = %q{2011-01-27}
+  s.date = %q{2011-02-15}
   s.description = %q{A bit of glue to add group-based access control to the radiant forum.}
   s.email = %q{will@spanner.org}
   s.extra_rdoc_files = [
     "README.markdown"
   ]
   s.files = [
-    "README.markdown",
+    ".gitignore",
+     "README.markdown",
      "Rakefile",
      "VERSION",
      "app/views/admin/forums/_forum_group.html.haml",
@@ -24,14 +25,8 @@ Gem::Specification.new do |s|
      "db/migrate/001_forums_groups.rb",
      "db/migrate/20091008101339_simple_ownership.rb",
      "group_forum_extension.rb",
-     "lib/forums_controller_extensions.rb",
      "lib/group_forum_tags.rb",
-     "lib/grouped_forum.rb",
-     "lib/grouped_post.rb",
-     "lib/grouped_topic.rb",
-     "lib/posts_controller_extensions.rb",
      "lib/tasks/group_forum_extension_tasks.rake",
-     "lib/topics_controller_extensions.rb",
      "radiant-group_forum-extension.gemspec",
      "spec/datasets/group_forum_forums_dataset.rb",
      "spec/datasets/group_forum_groups_dataset.rb",

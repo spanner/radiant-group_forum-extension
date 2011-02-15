@@ -5,8 +5,8 @@ class GroupForumForumsDataset < Dataset::Base
   
   def load
     create_forum "Public"
-    create_forum "Grouped", :group => groups(:chatty)
-    create_forum "Alsogrouped", :group => groups(:chatty)
+    create_forum "Grouped", :groups => [groups(:chatty)]
+    create_forum "Alsogrouped", :groups => [groups(:chatty)]
   end
   
   helpers do
