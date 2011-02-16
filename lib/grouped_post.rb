@@ -11,9 +11,10 @@ module GroupedPost
           conditions = reader.nil? ? "pp.group_id IS NULL" : ["pp.group_id IS NULL OR pp.group_id IN(#{ids.map{"?"}.join(',')})", *ids]
         end
         {
-          :joins => "INNER JOIN topics on posts.topic_id = topics.id INNER JOIN forums on topics.forum_id = forums.id LEFT OUTER JOIN permissions as pp on pp.permitted_id = forums.id AND pp.permitted_type = 'Forum'", 
+          :joins => "LEFT OUTER JOIN topics on posts.topic_id = topics.id LEFT OUTER JOIN forums on topics.forum_id = forums.id LEFT OUTER JOIN permissions as pp on pp.permitted_id = forums.id AND pp.permitted_type = 'Forum'", 
           :group => column_names.map { |n| self.table_name + '.' + n }.join(','),
-          :conditions => conditions
+          :conditions => conditions,
+          :readonly => false
         } 
       } do
         def count

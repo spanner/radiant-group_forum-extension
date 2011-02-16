@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{radiant-group_forum-extension}
-  s.version = "0.5.2"
+  s.version = "0.6.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["spanner"]
-  s.date = %q{2011-02-15}
+  s.date = %q{2011-02-16}
   s.description = %q{A bit of glue to add group-based access control to the radiant forum.}
   s.email = %q{will@spanner.org}
   s.extra_rdoc_files = [
@@ -27,6 +27,8 @@ Gem::Specification.new do |s|
      "group_forum_extension.rb",
      "lib/group_forum_tags.rb",
      "lib/grouped_controller_extensions.rb",
+     "lib/grouped_post.rb",
+     "lib/grouped_topic.rb",
      "lib/tasks/group_forum_extension_tasks.rake",
      "radiant-group_forum-extension.gemspec",
      "spec/datasets/group_forum_forums_dataset.rb",
@@ -59,17 +61,17 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<radiant>, [">= 0.9.0"])
-      s.add_runtime_dependency(%q<radiant-forum-extension>, [">= 0"])
-      s.add_runtime_dependency(%q<radiant-reader_group-extension>, [">= 0"])
+      s.add_runtime_dependency(%q<radiant-forum-extension>, [">= 2.0.0"])
+      s.add_runtime_dependency(%q<radiant-reader_group-extension>, [">= 1.2.0"])
     else
       s.add_dependency(%q<radiant>, [">= 0.9.0"])
-      s.add_dependency(%q<radiant-forum-extension>, [">= 0"])
-      s.add_dependency(%q<radiant-reader_group-extension>, [">= 0"])
+      s.add_dependency(%q<radiant-forum-extension>, [">= 2.0.0"])
+      s.add_dependency(%q<radiant-reader_group-extension>, [">= 1.2.0"])
     end
   else
     s.add_dependency(%q<radiant>, [">= 0.9.0"])
-    s.add_dependency(%q<radiant-forum-extension>, [">= 0"])
-    s.add_dependency(%q<radiant-reader_group-extension>, [">= 0"])
+    s.add_dependency(%q<radiant-forum-extension>, [">= 2.0.0"])
+    s.add_dependency(%q<radiant-reader_group-extension>, [">= 1.2.0"])
   end
 end
 
