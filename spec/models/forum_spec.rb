@@ -11,8 +11,17 @@ describe Forum do
     Forum.reflect_on_association(:groups).should_not be_nil
   end
   
-  it "should normally list only the ungrouped forums" do
-    Forum.visible.count.should == 1
+  describe "without a grouped reader" do
+    it "should list only the ungrouped forums" do
+      Forum.visible.count.should == 1
+      Forum.visible_to(readers(:ungrouped)).count.should == 1
+    end
+  end
+  
+  describe "to a grouped reader" do
+    it "should list also the forums of that group" do
+      Forum.visible_to(readers(:normal)).count.should == 3
+    end
   end
 
   describe "with a group" do

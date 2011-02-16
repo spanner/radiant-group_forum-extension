@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{radiant-group_forum-extension}
-  s.version = "0.5.0"
+  s.version = "0.5.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["spanner"]
@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
      "db/migrate/20091008101339_simple_ownership.rb",
      "group_forum_extension.rb",
      "lib/group_forum_tags.rb",
+     "lib/grouped_controller_extensions.rb",
      "lib/tasks/group_forum_extension_tasks.rake",
      "radiant-group_forum-extension.gemspec",
      "spec/datasets/group_forum_forums_dataset.rb",
